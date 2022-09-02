@@ -4,17 +4,20 @@ from utils import get_num_verbs
 
 
 def tem_sujeito(doc,nlp):
+	# Checando como o Spacy está classificando as palavras no doc (= resultado da divisão.)
+	for t in doc:
+		print(t.text, t.dep_)
 	sujeito = [t for t in doc if t.dep_ == "nsubj"]
 	# Checando se tem sujeito. O código final vai ter várias subdivisões dos casos com sujeito e dos casos sem sujeito
-	return sujeito
+	return len(sujeito)>0
 
 def syntatic_analysis(doc,nlp):
 	if tem_sujeito(doc,nlp):
 		print('frase: ',doc,' tem sujeito')
 
 #Chamada principal 
-frase='a casa caiu'
-# frase='A noiva casa de branco e eu canto músicas.'
+# frase='a casa caiu'
+frase='A noiva casa de branco e eu canto músicas.'
 #Bugou denovo(Verificar)
 # frase= 'O menino que comprou um carro escreveu um livro.'
 nlp = spacy.load("pt_core_news_lg")
