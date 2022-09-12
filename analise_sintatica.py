@@ -1,19 +1,10 @@
 import spacy
 from sentence_split import sentence_split
 from utils import get_num_verbs
+from analise_sujeito import analisa_sujeito
 
 
-def tem_sujeito(doc,nlp):
-	# Checando como o Spacy está classificando as palavras no doc (= resultado da divisão.)
-	for t in doc:
-		print(t.text, t.dep_)
-	sujeito = [t for t in doc if t.dep_ == "nsubj"]
-	# Checando se tem sujeito. O código final vai ter várias subdivisões dos casos com sujeito e dos casos sem sujeito
-	return len(sujeito)>0
 
-def syntatic_analysis(doc,nlp):
-	if tem_sujeito(doc,nlp):
-		print('frase: ',doc,' tem sujeito')
 
 #Chamada principal 
 # frase='a casa caiu'
@@ -28,9 +19,9 @@ if verb_count == 0:
 	print('Trata-se de uma frase, não há análise sintática.')
 elif verb_count == 1:
 	print(frase)
-	syntatic_analysis(nlp(frase),nlp)
+	analisa_sujeito(nlp(frase),nlp)
 else:
 	oracoes=sentence_split(frase,nlp)
 	for subfrase in oracoes:
-		syntatic_analysis(subfrase,nlp)
+		analisa_sujeito(subfrase,nlp)
 
