@@ -4,9 +4,8 @@ Esse arquivo se aplica somente quando o chama_classificacoes.py detecta um sujei
 
 
 def get_sujeito(texto_doc,n_sujeito):
-
+    sujeito = [t for t in texto_doc if t.dep_ == "nsubj"]
     sc = []
-
     if (
         n_sujeito > 1
     ):  # O Spacy está classificando alguns sujeitos compostos marcando 'nsubj' para cada núcleo
