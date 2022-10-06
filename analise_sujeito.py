@@ -30,10 +30,10 @@ def analisa_sujeito(doc,nlp):
 	n_sujeito=num_sujeito(doc,nlp)
 	if se:
 		print("Sujeito com 'se' válido")
-		print(get_se(doc))
+		return get_se(doc)
 	elif n_sujeito>0:
 		print('classificar sujeito padrão')
-		print(get_sujeito(doc,n_sujeito))
+		return get_sujeito(doc,n_sujeito)
 	else:
 		print('classificar sem sujeito')
-		print(get_sem_sujeito(doc))
+		return get_sem_sujeito(doc)
