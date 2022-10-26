@@ -17,9 +17,9 @@ def get_sem_sujeito(texto_doc):
             # Exemplo: "choveu muito ontem."
             verbo_meteorologico = "Oração sem sujeito. O verbo é meteorológico."
             return verbo_meteorologico
-        if v.lemma_ in ("fazer", "Faz", "faz"):
+        if v.lemma_ in ("fazer", "Faz", "faz", "ser", "Ser"):
             for o in texto_doc:
-                if o.dep_ in ("obj", "obl"):
+                if o.dep_ in ("obj", "obl", "ROOT"): # Ser e ROOT para "Serão dois longos anos".
                     if o.lemma_ in (c for c in clima):
                         # Exemplo: "Faz muito calor no Rio de Janeiro."
                         verbo_clima = "Oração sem sujeito. Expressão climática."
