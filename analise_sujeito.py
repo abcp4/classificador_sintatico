@@ -7,7 +7,7 @@ def num_sujeito(doc,nlp):
 	# Checando como o Spacy está classificando as palavras no doc (= resultado da divisão.)
 	for t in doc:
 		print(t.text, t.dep_)
-	sujeito = [t for t in doc if t.dep_ == "nsubj"]
+	sujeito = [t for t in doc if t.dep_ in ("nsubj", "nsubj:pass")]
 	# Checando se tem sujeito. O código final vai ter várias subdivisões dos casos com sujeito e dos casos sem sujeito
 	return len(sujeito)
 
