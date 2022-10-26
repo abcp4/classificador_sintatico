@@ -23,7 +23,9 @@ def get_sujeito(texto_doc,n_sujeito):
             if c.dep_ == "conj"
             for s in texto_doc
             if s.dep_ == "nsubj"
-            if c.head.text == s.text
+            for x in texto_doc
+            if x.head.text == s.text
+            if c.head.text == s.text or (c.head.text == x.text) # Para "O pai do menino(nmod) e a menina(menino) são parentes."
         ]  # esse é o caso tradicional da classificação do Spacy em sujeito composto (um 'nsubj' e um núcleo ligado a ele por 'cc', conjunção)
         if cc:
             ss = []
