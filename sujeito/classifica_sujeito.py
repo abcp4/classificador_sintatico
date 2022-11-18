@@ -22,7 +22,7 @@ def get_sujeito(texto_doc,n_sujeito):
             for c in texto_doc
             if c.dep_ == "conj"
             for s in texto_doc
-            if s.dep_ == "nsubj"
+            if s.dep_ in ("nsubj", "nsubj:pass")
             for x in texto_doc
             if x.head.text == s.text
             if c.head.text == s.text or (c.head.text == x.text) # Para "O pai do menino(nmod) e a menina(menino) são parentes."
