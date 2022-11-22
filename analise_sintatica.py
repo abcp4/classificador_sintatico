@@ -8,7 +8,7 @@ nlp = spacy.load("pt_core_news_lg")
 def preprocess(texto):
     # (1) Colocando a primeira letra em minúscula por conta de algumas dificuldades do Spacy com palavras em maiúsculas
     # Ver o impacto que isso tem para nomes próprios (maria, pedro, são paulo, etc.)
-    texto = texto[0].lower() + texto[1:]
+    # texto = texto[0].lower() + texto[1:]
 
     ts = texto.split()
 
