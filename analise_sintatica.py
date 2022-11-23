@@ -43,6 +43,7 @@ def processa(frase):
         return_message=analisa_sujeito(nlp(frase),nlp)
     else:
         oracoes=sentence_split(frase,nlp)
+        analise=str(analisa_sujeito(subfrase,nlp))
         for subfrase in oracoes:
-            return_message+=analisa_sujeito(subfrase,nlp)+'\n'
+            return_message+=analise+'\n'
     return return_message
