@@ -1,6 +1,7 @@
 """
 Esse arquivo se aplica somente quando o chama_classificacoes.py detecta um sujeito na oração.
 """
+import itertools
 
 
 def get_sujeito(texto_doc,n_sujeito):
@@ -49,6 +50,7 @@ def get_sujeito(texto_doc,n_sujeito):
                 else:
                     sst = list(s.subtree)
                     ss.append(sst)
-                # Exemplo: "O menino chegou cedo."
-                sujeito_simples = f"{ss} é o sujeito simples de {s.head} e {s.text} é o núcleo do sujeito."
-                return sujeito_simples
+            # Exemplo: "O menino chegou cedo."
+            sujeito_destacado = " ".join(str(item) for item in itertools.chain(*ss))
+            sujeito_simples = f"`{sujeito_destacado}` é o sujeito simples de `{s.head}` e `{s.text}` é o núcleo do sujeito."
+            return sujeito_simples
