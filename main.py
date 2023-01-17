@@ -11,4 +11,4 @@ button = st.button('Enviar!')
 
 
 if button:
-    st.text(processa(st.session_state.frase))
+    st.markdown(processa(st.session_state.frase))
