@@ -35,7 +35,8 @@ def get_sujeito(texto_doc,n_sujeito):
                 sst = list(s.subtree)
                 ss.append(sst)
             # Exemplo: "O menino e a menina chegaram cedo"
-            sujeito_composto = f"{ss} formam o sujeito composto de {s.head.text} #cc"
+            sujeito_destacado = " ".join(str(item) for item in itertools.chain(*ss))
+            sujeito_composto = f"{sujeito_destacado} formam o sujeito composto de {s.head.text} #cc"
             return sujeito_composto
 
         else:
