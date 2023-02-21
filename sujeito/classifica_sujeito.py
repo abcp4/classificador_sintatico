@@ -13,8 +13,9 @@ def get_sujeito(texto_doc,n_sujeito):
         for s in sujeito:
             sct = list(s.subtree)
             sc.append(sct)
-        # Exemplo: "O menino e a menina saíram cedo"
-        sujeito_composto = f"{sc} formam o sujeito composto de {s.head.text}"  # Precisa formatar melhor a saída
+        # Exemplo: "O bom menino e a mãe da amiga compraram doces"
+        sujeito_destacado = " ".join(str(item) for item in itertools.chain(*sc))
+        sujeito_composto = f"\"{sujeito_destacado}\" formam o sujeito composto de \"{s.head.text}\""  # Precisa formatar melhor a saída
         return sujeito_composto
     else:
 
@@ -28,7 +29,7 @@ def get_sujeito(texto_doc,n_sujeito):
             if x.head.text == s.text
             if c.head.text == s.text or (c.head.text == x.text) # Para "O pai do menino(nmod) e a menina(menino) são parentes."
         ]  # esse é o caso tradicional da classificação do Spacy em sujeito composto (um 'nsubj' e um núcleo ligado a ele por 'cc', conjunção)
-        if cc:
+        if cc: # sujeito composto
             ss = []
             # cc = []
             for s in sujeito:
@@ -36,7 +37,7 @@ def get_sujeito(texto_doc,n_sujeito):
                 ss.append(sst)
             # Exemplo: "O menino e a menina chegaram cedo"
             sujeito_destacado = " ".join(str(item) for item in itertools.chain(*ss))
-            sujeito_composto = f"{sujeito_destacado} formam o sujeito composto de {s.head.text} #cc"
+            sujeito_composto = f"\"{sujeito_destacado}\" formam o sujeito composto de \"{s.head.text}\""
             return sujeito_composto
 
         else:
@@ -53,5 +54,5 @@ def get_sujeito(texto_doc,n_sujeito):
                     ss.append(sst)
             # Exemplo: "O menino chegou cedo."
             sujeito_destacado = " ".join(str(item) for item in itertools.chain(*ss))
-            sujeito_simples = f"`{sujeito_destacado}` é o sujeito simples de `{s.head}` e `{s.text}` é o núcleo do sujeito."
+            sujeito_simples = f"\"{sujeito_destacado}\" é o sujeito simples de \"{s.head}\" e \"{s.text}\" é o núcleo do sujeito."
             return sujeito_simples
