@@ -3,7 +3,7 @@ from sentence_split import sentence_split
 from utils import get_num_verbs
 from analise_sujeito import analisa_sujeito
 
-nlp = spacy.load("pt_core_news_lg")
+nlp = spacy.load("pt_core_news_md")
 
 def preprocess(texto):
     # (1) Colocando a primeira letra em minúscula por conta de algumas dificuldades do Spacy com palavras em maiúsculas
